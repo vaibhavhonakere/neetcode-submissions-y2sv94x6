@@ -11,14 +11,14 @@ class Solution:
         intervals.sort(key=lambda x: x.start)
         if(len(intervals) == 0):
             return True
-        prevEnd = intervals[0].end
+        inital = intervals[0]
 
         for pt in intervals[1:]:
             start = pt.start
             end = pt.end
-            if(prevEnd <= start):
-                prevEnd = end
-            else:
+            if(start < inital.end):
                 return False
+            else:
+                inital = pt
         
         return True
